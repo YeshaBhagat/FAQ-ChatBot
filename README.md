@@ -1,28 +1,46 @@
-# FAQ-ChatBot
-This project is a **FAQ-based customer support chatbot** built using **Node.js** and the **OpenAI SDK (via OpenRouter)**. The chatbot answers user queries related to the QuickBite food delivery service by using a predefined FAQ dataset.
+# QuickBite-FAQ-Chatbot
 
-The bot is designed to respond **only with information provided in the FAQ** and avoids generating answers outside that dataset. If a user asks a question that is not covered in the FAQ or unrelated to QuickBite services, the chatbot politely declines and directs the user to contact support.
+A simple **FAQ-based customer support chatbot** built using **Node.js** and the **OpenAI SDK (via OpenRouter)**.
+The chatbot answers user queries related to the **QuickBite food delivery service** using a predefined FAQ dataset and responds only with the information available in that dataset.
 
-The project demonstrates how to build a controlled AI chatbot with guardrails to prevent hallucinations, off-topic responses, and unsafe interactions.
+## Demo
 
-## How it Works
+![QuickBite Chatbot](chatbot_demo.png)
 
-The chatbot sends a request to the AI model with a **system prompt** that includes the QuickBite FAQ data and rules. The model then generates a response based only on that information.
+## Features
 
-Key rules implemented in the system prompt:
+* Answers customer questions using a **QuickBite FAQ knowledge base**
+* Prevents responses outside the provided FAQ dataset
+* Handles **out-of-scope questions** with a default support message
+* Maintains a **polite and empathetic tone**
+* Avoids asking for **sensitive information** such as passwords, OTPs, or card numbers
+* Simple **command-line chatbot interface**
 
-* The chatbot answers **only using the provided FAQ data**
-* If the question is not in the FAQ, it replies with
-  *"I don't have information on that. Please contact [support@quickbite.com](mailto:support@quickbite.com)."*
-* The bot maintains a **polite and empathetic tone**
-* It does **not generate or invent policies or information**
-* It avoids asking for **sensitive data** such as passwords, OTPs, or card numbers
-* If a user sends abusive language, the bot asks them to **rephrase politely**
+## How It Works
 
-## Files in the Project
+The chatbot sends user queries to an AI model along with a **system prompt containing the QuickBite FAQ and guardrail rules**.
+The model generates responses strictly based on the provided FAQ data.
 
-* `index.js` — Main chatbot program
-* `faq.json` — Dataset containing QuickBite FAQ questions and answers
-* `.env.example` — Example file showing required environment variables
+If a question is not present in the FAQ or unrelated to QuickBite services, the chatbot replies:
 
-This project shows how AI can be combined with a structured dataset to build a **reliable FAQ support chatbot**.
+> "I don't have information on that. Please contact [support@quickbite.com](mailto:support@quickbite.com)."
+
+## Project Structure
+
+```text
+FAQs_ChatBot
+│
+├── index.js        # Main chatbot program
+├── faq.json        # FAQ dataset used as the chatbot knowledge base
+├── package.json    # Project dependencies
+├── .env.example    # Environment variables template
+└── README.md
+```
+
+## Technologies Used
+
+* Node.js
+* OpenAI SDK
+* OpenRouter API
+* dotenv
+* JSON
